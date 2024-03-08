@@ -322,13 +322,11 @@ footer {
   margin-top: 20px;
 }
 
-.video,
-.location {
+.video, .location {
   width: 45%;
 }
 
-.video iframe,
-.location iframe {
+.video iframe,.location iframe {
   width: 100%;
   height: 300px; 
 }
