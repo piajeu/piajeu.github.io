@@ -8,6 +8,30 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Srisakdi&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script>
+        $(function() {
+            $.getJSON('https://raw.githubusercontent.com/piajeu/piajeu.github.io/main/json.json', function(data) {
+                var articles = data.articles;
+                var categories = data.categories;
+                var publishTimes = data.publish_times;
+                var scrapingTime = data.scraping_time;
+
+                var tableBody = $("#article-data");
+
+                $.each(articles, function(index, article) {
+                    var tableRow = "<tr>" +
+                        "<td>" + (index + 1) + "</td>" +
+                        "<td>" + article + "</td>" +
+                        "<td>" + categories[index] + "</td>" +
+                        "<td>" + publishTimes[index] + "</td>" +
+                        "<td>" + scrapingTime + "</td>" +
+                        "</tr>";
+
+                    tableBody.append(tableRow);
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -32,28 +56,34 @@
             </div>
         </nav>
     </header>
-
-    <section id="json">
-        <h1>JSON Data Display</h1>
-        <div id="articles"></div>
-        <div id="categories"></div>
-        <div id="publishTimes"></div>
-        <div id="scrapingTime"></div>
+    <section id="webscraping">
+        <main>
+            <div class="box flextwo">
+                <div class="border">
+                    <article>
+                        <div class="box">
+                            <article>
+                                <h2>Berita Terkini</h2>
+                                <table class="table_scrap">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Judul</th>
+                                            <th>Kategori</th>
+                                            <th>Waktu Publish</th>
+                                            <th>Waktu Scraping</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="article-data"></tbody>
+                                </table>
+                            </article>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </main>
     </section>
 
-    <script>
-        $(function () {
-            $.get('json.json', function (obj) {
-                var str = "<table border=1>";
-                str += "<tr><td>No</td><td>Judul</td><td>Kategori</td><td>Waktu Publish</td><td>Waktu Scraping</td></tr>";
-                $.each(obj.articles, function (n, article) {
-                    str += "<tr><td>" + (n + 1) + "</td><td>" + article + "</td><td>" + obj.categories[n] + "</td><td>" + obj.publish_times[n] + "</td><td>" + obj.scraping_time + "</td></tr>";
-                });
-                str += "</table>";
-                $('#json').html(str);
-            });
-        })
-    </script>
 </body>
 
 </html>

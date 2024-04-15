@@ -359,3 +359,8 @@ footer {
       transform: rotate(360deg);
   }
 }
+
+.table_scrap, th, td {
+  border: 3px solid #35374B;
+  text-align: center;
+}

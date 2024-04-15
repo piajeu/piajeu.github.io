@@ -19,13 +19,13 @@ with open('scraping.txt', 'w', encoding='utf-8') as file:
 
     file.write('\nKategori\n')
     file.write('============================================\n')
-    categories = obj.find_all('div',class_='card-networks__body')
+    categories = obj.find_all('span',class_='kanal-info')
     for category in categories:
         file.write(f"{category.text.strip()}\n")
 
     file.write('\nWaktu publish\n')
     file.write('============================================\n')
-    publish_times = obj.find_all('div',class_='date date-item__headline')
+    publish_times = obj.find_all('div',class_='date')
     for publish_time in publish_times:
         file.write(f"{publish_time.text.strip()}\n")
 
