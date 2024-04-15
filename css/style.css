@@ -360,7 +360,21 @@ footer {
   }
 }
 
-.table_scrap, th, td {
-  border: 3px solid #35374B;
-  text-align: center;
+.table_scrap th,
+.table_scrap td {
+    padding: 10px;
+    text-align: left;
+}
+
+.table_scrap th {
+    background-color: #35374B;
+    color: #f1cee8;
+}
+
+.table_scrap tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.menu-toggle {
+    display: none;
 }
